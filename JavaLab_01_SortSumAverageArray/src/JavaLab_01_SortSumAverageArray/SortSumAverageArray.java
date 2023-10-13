@@ -19,7 +19,7 @@ public class SortSumAverageArray {
         show(arr);
         sum = sumArray(arr);
         System.out.print("Tổng của dãy: " + sum);
-        average = sum/(n+1);
+        average = sum/n;
         System.out.print("TBC của dãy: " + average);
     }
 
