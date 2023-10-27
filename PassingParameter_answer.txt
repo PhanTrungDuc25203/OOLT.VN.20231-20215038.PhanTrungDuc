@@ -1,0 +1,5 @@
+Java is a pass-by-value language, which means that when you pass a parameter to a method in Java, you are actually passing a copy of the parameter's value, not the original variable.
+
+The essence of an object in Java is that it is a reference variable. When you pass two objects, such as jungleDVD and cinderellaDVD, you are essentially passing reference values, not actual objects. Therefore, when you change the values of o1 and o2 within a method, you are only modifying the local reference variables within that method.
+
+When you pass a reference value, there is a pointer pointing to the actual object. If you use methods to interact with the object through method calls, the object will change. The difference between the above and below statements lies in the impact on the pointer and the impact on the object itself.
