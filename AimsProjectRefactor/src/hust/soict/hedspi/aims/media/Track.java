@@ -28,8 +28,8 @@ public class Track implements Playable{
 
 	@Override
 	public void play() {
-		System.out.println("Playing DVD: " + this.getTitle());
-		System.out.println("DVD length: " + this.getLength());
+		System.out.println("Playing track: " + this.getTitle());
+		System.out.println("Track length: " + this.getLength());
 	}
 
 	@Override
@@ -43,5 +43,12 @@ public class Track implements Playable{
         Track otherTrack = (Track) obj;
         return title.equals(otherTrack.title) && length == otherTrack.length;
     }
+
+	@Override
+	public String toString() {
+		System.out.println();
+		return String.format("%20s%20s",title,length);
+	}
+	
 	
 }

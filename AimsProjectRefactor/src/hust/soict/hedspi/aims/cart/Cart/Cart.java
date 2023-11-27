@@ -87,4 +87,18 @@ public class Cart {
 	public void sortByCost() {
 		Collections.sort(itemOrdered, Media.COMPARE_BY_COST_TITLE);
 	}
+
+	public void playMedia(Media med) {
+		if(med instanceof DigitalVideoDisc || med instanceof CompactDisc) {
+			((DigitalVideoDisc) med).play();
+		} else {
+			System.out.println("Can't play this media except DVDs and CDs");
+		}
+	}
+	
+	public void removeAllMediaInCart() {
+		for(Media med : itemOrdered) {
+			itemOrdered.remove(med);
+		}
+	}
 }

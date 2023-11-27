@@ -27,7 +27,12 @@ public class Disc extends Media{
 	}
 	@Override
 	public String toString() {
-		return "Disc [director=" + director + ", length=" + length + "]";
+		//return "Disc [director=" + director + ", length=" + length + "]";
+		return String.format("%20s%20s",director,length);
+	}
+	public void play(String trackTitle) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

@@ -12,7 +12,7 @@ public class DigitalVideoDisc extends Disc implements Playable{
 	
 	@Override
 	public String toString() {
-		return String.format("%5s%60s",super.toString());
+		return String.format(super.toString());
 	}
 	
 	@Override
