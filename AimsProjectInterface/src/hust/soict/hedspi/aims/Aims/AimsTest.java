@@ -12,7 +12,7 @@ import hust.soict.hedspi.aims.media.Media;
 import hust.soict.hedspi.aims.media.Track;
 import hust.soict.hedspi.aims.store.Store;
 
-public class Aims {
+public class AimsTest {
 	private static final Scanner scanner = new Scanner(System.in);
 	static Store store = new Store();
 	static Cart cart = new Cart();
@@ -221,12 +221,10 @@ public class Aims {
 
 	private static void updateStore() {
 		// Implement the logic to update store (add/remove media) here
-		System.out.println("Enter meida's name: ");
 		String mediaNameToSearch = scanner.nextLine();
-		//scanner.nextLine();
+		scanner.nextLine();
 		
 		if(store.searchForItemInStore(mediaNameToSearch) != null) {
-			System.out.println("Remove sucessfully!");
 			store.removeMedia(store.searchForItemInStore(mediaNameToSearch));
 		} else {
 			System.out.println("New media to Store:");
@@ -272,8 +270,7 @@ public class Aims {
     			    String trackTitle = scanner.nextLine();
     			    scanner.nextLine(); // Đọc dòng trống để tiêu hao dấu xuống dòng
     			    System.out.print("Track's length: ");
-    			    int trackLength = scanner.nextInt();		        
-    			    scanner.nextLine();
+    			    int trackLength = scanner.nextInt();		            
     			    newTrackList.add(new Track(trackTitle,trackLength));
     			}
 			    

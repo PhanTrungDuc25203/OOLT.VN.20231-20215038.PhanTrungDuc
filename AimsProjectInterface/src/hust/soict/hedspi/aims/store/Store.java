@@ -105,4 +105,12 @@ public class Store {
 		return null;
 	}
 
+	public ArrayList<Media> getItemsInStore() {
+		return itemsInStore;
+	}
+
+	public void setItemsInStore(ArrayList<Media> itemsInStore) {
+		this.itemsInStore = itemsInStore;
+	}
+
 }
