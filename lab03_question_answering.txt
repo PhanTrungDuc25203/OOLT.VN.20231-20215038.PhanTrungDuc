@@ -1,0 +1,15 @@
+- What are the advantages of Polymorphism?
+Polymorphism allows a parent class to define common methods for all its derived classes while allowing the subclasses to specify additional implementation for some or all of those methods.
+Like in the lab, play() and toString() method help us not to write for each class each method, like play01() for DVD, play02() for CD, play03() for Book, quite weird.
+- How is Inheritance useful to achieve Polymorphism in Java?
+When we look at the Polymorphic method in the parent class, we can quite understand what happens in the child method. Furthermore, each child may have different method. Very flexible.
+- What are the differences between Polymorphism and Inheritance in Java?
+Inheritance is a mechanism where a new class is derived from an existing class. In Java, inheritance supports the concept of code reusability and reduces the length of the code. For example, a class DVD, CD, Book can inherit from the class Media
+
+Polymorphism, on the other hand, allows an object to take on many forms. The most common use of polymorphism in OOP occurs when a parent class reference is used to refer to a child class object. It allows the object to decide which form of the function to implement at compile-time (overloading) as well as run-time (overriding). For example, a class DVD can have a method play(), which print 
+System.out.println("Playing DVD: " + this.getTitle());
+System.out.println("DVD length: " + this.getLength());
+class CD play():
+for (Track track: tracks){
+        track.play();
+}
