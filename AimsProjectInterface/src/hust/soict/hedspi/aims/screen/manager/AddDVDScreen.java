@@ -168,7 +168,9 @@ public class AddDVDScreen extends JFrame {
 			DigitalVideoDisc newDiscToStore = new DigitalVideoDisc(tempID, tempTitle, tempCategory, tempCost, tempDirector, tempLength);
 			StoreManagerScreen.store.addMedia(newDiscToStore);
 			StoreManagerScreen.store.print();
-			
+//			System.out.format("%10s%30s%20s%10s",newDiscToStore.getId(),newDiscToStore.getTitle(),newDiscToStore.getCategory(), newDiscToStore.getCost());
+//			System.out.println(newDiscToStore.toString());
+//			System.out.println();
 			AddDVDScreen.addButton.setEnabled(false);;
 		}
 	}

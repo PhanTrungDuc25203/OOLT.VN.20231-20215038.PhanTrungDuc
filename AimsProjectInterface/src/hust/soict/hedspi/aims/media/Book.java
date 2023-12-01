@@ -35,5 +35,10 @@ public class Book extends Media{
 		this.authors = authors;
 	}
 	
+	@Override
+	public String toString() {
+
+		return String.format("%20s",authors);
+	}
 
 }

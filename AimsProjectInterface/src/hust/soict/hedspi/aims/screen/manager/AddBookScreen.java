@@ -51,7 +51,7 @@ public class AddBookScreen extends JFrame {
 	public AddBookScreen() {
 		setForeground(new Color(0, 255, 255));
 		setFont(new Font("Dialog", Font.PLAIN, 14));
-		setTitle("Add DVD");
+		setTitle("Add Book");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 678, 393);
 		contentPane = new JPanel();
@@ -112,12 +112,12 @@ public class AddBookScreen extends JFrame {
 		
 		JButton resetButton = new JButton("RESET");
 		resetButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		resetButton.addActionListener(new ResetAllDVDAddFormActionListener());
+		resetButton.addActionListener(new ResetAllBookAddFormActionListener());
 		resetButton.setBounds(31, 298, 143, 41);
 		contentPane.add(resetButton);
 		
 		addButton = new JButton("ADD");
-		addButton.addActionListener(new AddNewDVDToStoreActionListener());
+		addButton.addActionListener(new AddNewBookToStoreActionListener());
 		addButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		addButton.setBounds(255, 298, 143, 41);
 		contentPane.add(addButton);
@@ -140,7 +140,7 @@ public class AddBookScreen extends JFrame {
 		
 		
 	}
-	private class ResetAllDVDAddFormActionListener  implements ActionListener {
+	private class ResetAllBookAddFormActionListener  implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent evt) {
 			textField.setText("");
@@ -153,7 +153,7 @@ public class AddBookScreen extends JFrame {
 		}
 	}
 	
-	private class AddNewDVDToStoreActionListener implements ActionListener {
+	private class AddNewBookToStoreActionListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent evt) {
 			String tempStringID = textField.getText();
@@ -173,7 +173,9 @@ public class AddBookScreen extends JFrame {
 			Book newBookToStore = new Book(tempID, tempTitle, tempCategory, tempCost, authorList);
 			StoreManagerScreen.store.addMedia(newBookToStore);
 			StoreManagerScreen.store.print();
-			
+//			System.out.format("%10s%30s%20s%10s",newBookToStore.getId(),newBookToStore.getTitle(),newBookToStore.getCategory(), newBookToStore.getCost());
+//			System.out.println(newBookToStore.toString());
+//			System.out.println();
 			AddBookScreen.addButton.setEnabled(false);
 		}
 	}
@@ -187,7 +189,6 @@ public class AddBookScreen extends JFrame {
                 authorsList.add(author.trim());
             }
         }
-
         return authorsList;
     }
 }

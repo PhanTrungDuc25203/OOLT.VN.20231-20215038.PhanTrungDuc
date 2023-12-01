@@ -69,7 +69,4 @@ public class CompactDisc extends Disc implements Playable{
 
 		return String.format("%20s%20s",artist,tracks.toString());
 	}
-
-	
-	
 }

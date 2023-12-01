@@ -86,15 +86,17 @@ public class StoreManagerScreen extends JFrame{
 	JMenuBar createMenuBar() {
 		JMenu menu = new JMenu("Options");
 		
-		menu.add(new JMenuItem("View store"));
-		
+		JMenuItem menuItem = new JMenuItem("View store");
+		menuItem.addActionListener(new ViewStoreForDetail()); 
+		menu.add(menuItem);
 		
 		JMenu smUpdateStore = new JMenu("Update Store");
 		//smUpdateStore.add(new JMenuItem("Add Book"));
-		smUpdateStore.add(new JMenuItem("Add CD"));
+		//smUpdateStore.add(new JMenuItem("Add CD"));
 		//smUpdateStore.add(new JMenuItem("Add DVD"));
 		
 		menu.add(smUpdateStore);
+		
 		JMenuItem addDVDItem = new JMenuItem("Add DVD");
         addDVDItem.addActionListener(new ActionListener() {
             @Override
@@ -111,9 +113,17 @@ public class StoreManagerScreen extends JFrame{
             }
         });
         
+        JMenuItem addCDItem = new JMenuItem("Add CD");
+        addCDItem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+            	AddCDScreen.main(null);
+            }
+        });
+        
         smUpdateStore.add(addDVDItem);
         smUpdateStore.add(addBookItem);
-        
+        smUpdateStore.add(addCDItem);
         
         
 		JMenuBar menuBar = new JMenuBar();
@@ -148,11 +158,18 @@ public class StoreManagerScreen extends JFrame{
 		for(int i = 0; i < store.getStoreQuantity(); i++) {
 			MediaStore cell = new MediaStore(mediaInStore.get(i));
 			center.add(cell);
-		}
-		
+		}	
 		return center;
 	}
 	
+	private class ViewStoreForDetail implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			JOptionPane.showMessageDialog(null, "Đang view đấy thây:))");
+		}
+	}
 	public StoreManagerScreen(Store store) {
 		StoreManagerScreen.store = store;
 		
