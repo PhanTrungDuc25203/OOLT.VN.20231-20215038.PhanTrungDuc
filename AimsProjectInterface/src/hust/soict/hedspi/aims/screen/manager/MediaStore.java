@@ -14,6 +14,10 @@ import hust.soict.hedspi.aims.media.Playable;
 
 
 public class MediaStore extends JPanel{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Media media;
 	public MediaStore(Media media) {
 		this.media = media;
@@ -31,8 +35,11 @@ public class MediaStore extends JPanel{
 		
 		if(media instanceof Playable) {
 			JButton playButton = new JButton("Play");
+			JButton detailButton = new JButton("Details");
 			playButton.addActionListener(new playChosenMedia());
+			detailButton.addActionListener(new seeMediaDetail());
 			container.add(playButton);
+			container.add(detailButton);
 		}
 		
 		this.add(Box.createVerticalGlue());
@@ -48,6 +55,13 @@ public class MediaStore extends JPanel{
 		@Override
 		public void actionPerformed(ActionEvent evt) {
 			media.playDialog();
+		}
+	}
+	
+	private class seeMediaDetail implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent evt) {
+			
 		}
 	}
 }
