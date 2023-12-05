@@ -7,7 +7,6 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import hust.soict.hedspi.aims.disc.DigitalVideoDisc.DigitalVideoDisc;
 import hust.soict.hedspi.aims.media.Book;
-
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -54,19 +53,19 @@ public class AddBookScreen extends AddItemToStoreScreen {
 		textField_4.setBounds(255, 227, 357, 40);
 		getContentPane().add(textField_4);
 		
-		getResetButton().addActionListener(new ResetAllBookAddFormActionListener());
-		getAddButton().addActionListener(new AddNewBookToStoreActionListener());
+		getResetButton().addActionListener(new ResetAllItemAddFormActionListener());
+		getAddButton().addActionListener(new AddNewItemToStoreActionListener());
 
-		
 		JLabel lblNewLabel = new JLabel("Example: author1,author2,...");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblNewLabel.setBounds(31, 265, 254, 13);
 		getContentPane().add(lblNewLabel);
-
-		
-		
 	}
-	private class ResetAllBookAddFormActionListener  implements ActionListener {
+	
+	/**
+	 * RESET BUTTON's Action
+	 */
+	private class ResetAllItemAddFormActionListener  implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent evt) {
 			getTextField().setText("");
@@ -79,7 +78,10 @@ public class AddBookScreen extends AddItemToStoreScreen {
 		}
 	}
 	
-	private class AddNewBookToStoreActionListener implements ActionListener {
+	/**
+	 * ADD BUTTON's Action
+	 */
+	private class AddNewItemToStoreActionListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent evt) {
 			String tempStringID = getTextField().getText();
@@ -107,6 +109,10 @@ public class AddBookScreen extends AddItemToStoreScreen {
 			getAddButton().setEnabled(false);
 		}
 	}
+	
+	/**
+	 * get authors's name algorithm
+	 */
 	private static ArrayList<String> splitAuthors(String authorsInput) {
         ArrayList<String> authorsList = new ArrayList<>();
         

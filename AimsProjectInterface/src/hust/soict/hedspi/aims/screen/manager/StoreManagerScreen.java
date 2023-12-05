@@ -19,6 +19,9 @@ public class StoreManagerScreen extends JFrame{
 	static Store store = new Store();
 	Container cp = getContentPane();
 	
+	/**
+	 * Create north area
+	 */
 	JPanel createNorth() {
 		JPanel north = new JPanel();
 		north.setLayout(new BoxLayout(north, BoxLayout.Y_AXIS));
@@ -27,7 +30,9 @@ public class StoreManagerScreen extends JFrame{
 		return north;
 	}
 	
-	
+	/**
+	 * create menuBar
+	 */
 	JMenuBar createMenuBar() {
 		JMenu menu = new JMenu("Options");
 		
@@ -75,6 +80,9 @@ public class StoreManagerScreen extends JFrame{
 		return menuBar;
 	}
 	
+	/**
+	 * create header
+	 */
 	JPanel createHeader() {
 		JPanel header = new JPanel();
 		header.setLayout(new BoxLayout(header, BoxLayout.X_AXIS));
@@ -92,6 +100,9 @@ public class StoreManagerScreen extends JFrame{
 		return header;
 	}
 	
+	/**
+	 * create center area
+	 */
 	JPanel createCenter() {
 		JPanel center = new JPanel();
 		center.setLayout(new GridLayout(3, 2, 2, 2));
@@ -105,6 +116,9 @@ public class StoreManagerScreen extends JFrame{
 		return center;
 	}
 	
+	/**
+	 * view store menuItem's action
+	 */
 	private class ViewStoreForDetail implements ActionListener{
 
 		@Override
@@ -118,6 +132,10 @@ public class StoreManagerScreen extends JFrame{
 			repaint();
 		}
 	}
+	
+	/**
+	 * create Screen
+	 */
 	public StoreManagerScreen(Store store) {
 		StoreManagerScreen.store = store;
 		
@@ -134,12 +152,18 @@ public class StoreManagerScreen extends JFrame{
 		setVisible(true);
 	}
 	
+	/**
+	 * launch the Screen
+	 */
 	public static void main(String[] args) {
 		StoreManagerScreen.databaseInput();
 		store.print();
 		new StoreManagerScreen(store);
 	}
 	
+	/**
+	 * initialize the database
+	 */
 	private static void databaseInput() {
 		DigitalVideoDisc dvdList[] = {
 				new DigitalVideoDisc(1001,"Lion King","Animation",59.95f,"Roger Allers",311),
@@ -169,37 +193,35 @@ public class StoreManagerScreen extends JFrame{
 				new Book(2004, "Thỏ và Rùa", "Dân gian", 6.00f, authors4),
 				new Book(2005, "Lập trình C++", "Lập trình", 20.00f, authors5),
 		};
-	List<Track> trackList1 = new ArrayList<Track>();
-	 	trackList1.add(new Track("Alone", 100));
-	 	trackList1.add(new Track("Alone II", 200));
-	 	trackList1.add(new Track("Faded", 300));
-	 	trackList1.add(new Track("Unity", 400));
-	 	trackList1.add(new Track("i'm on my way", 500));
-	 List<Track> trackList2 = new ArrayList<Track>();
-		 trackList2.add(new Track("Lover", 100));
-		 trackList2.add(new Track("Hello", 200));
-	 List<Track> trackList3 = new ArrayList<Track>();
-	 	trackList3.add(new Track("Tàu anh qua núi", 100));
-	 	trackList3.add(new Track("Sầu tím điệp hồng", 200));
-	 	trackList3.add(new Track("Hồng nhan", 300));
-	 List<Track> trackList4 = new ArrayList<Track>();
-	 	trackList4.add(new Track("Thunder", 100));
-	 	trackList4.add(new Track("My Heart", 200));
-	 	trackList4.add(new Track("Waiting for love", 300));
-	 	trackList4.add(new Track("The night", 400));
-	 List<Track> trackList5 = new ArrayList<Track>();
-	 	trackList5.add(new Track("Yoruni Kakeru",120));
-	 	trackList5.add(new Track("Sakura",130));
-	 	trackList5.add(new Track("Anata ni deaete yokatta",100));
-	CompactDisc compactDiscList[] = {
-			new CompactDisc(3001, "Alan Walker", "EDM", 142.90f, "Alan Walker", trackList1),
-			new CompactDisc(3002, "Taylor Swift", "Pop", 230.23f, "Taylor Swift", trackList2),
-			new CompactDisc(3003, "Golden Music", "Bolero", 14.00f, "Artist1", trackList3),
-			new CompactDisc(3004, "NCS", "EDM", 320.0f, "Avicii", trackList4),
-			new CompactDisc(3005, "Nhac Nhat hay nhat", "Pop", 321.654f, "Yoshikage", trackList5),
-	};
-		
-		
+		 List<Track> trackList1 = new ArrayList<Track>();
+		 	trackList1.add(new Track("Alone", 100));
+		 	trackList1.add(new Track("Alone II", 200));
+		 	trackList1.add(new Track("Faded", 300));
+		 	trackList1.add(new Track("Unity", 400));
+		 	trackList1.add(new Track("i'm on my way", 500));
+		 List<Track> trackList2 = new ArrayList<Track>();
+			 trackList2.add(new Track("Lover", 100));
+			 trackList2.add(new Track("Hello", 200));
+		 List<Track> trackList3 = new ArrayList<Track>();
+		 	trackList3.add(new Track("Tàu anh qua núi", 100));
+		 	trackList3.add(new Track("Sầu tím điệp hồng", 200));
+		 	trackList3.add(new Track("Hồng nhan", 300));
+		 List<Track> trackList4 = new ArrayList<Track>();
+		 	trackList4.add(new Track("Thunder", 100));
+		 	trackList4.add(new Track("My Heart", 200));
+		 	trackList4.add(new Track("Waiting for love", 300));
+		 	trackList4.add(new Track("The night", 400));
+		 List<Track> trackList5 = new ArrayList<Track>();
+		 	trackList5.add(new Track("Yoruni Kakeru",120));
+		 	trackList5.add(new Track("Sakura",130));
+		 	trackList5.add(new Track("Anata ni deaete yokatta",100));
+		 CompactDisc compactDiscList[] = {
+				new CompactDisc(3001, "Alan Walker", "EDM", 142.90f, "Alan Walker", trackList1),
+				new CompactDisc(3002, "Taylor Swift", "Pop", 230.23f, "Taylor Swift", trackList2),
+				new CompactDisc(3003, "Golden Music", "Bolero", 14.00f, "Artist1", trackList3),
+				new CompactDisc(3004, "NCS", "EDM", 320.0f, "Avicii", trackList4),
+				new CompactDisc(3005, "Nhac Nhat hay nhat", "Pop", 321.654f, "Yoshikage", trackList5),
+		};
 		
 		store.addMedia(dvdList);
 		store.addMedia(bookList);
