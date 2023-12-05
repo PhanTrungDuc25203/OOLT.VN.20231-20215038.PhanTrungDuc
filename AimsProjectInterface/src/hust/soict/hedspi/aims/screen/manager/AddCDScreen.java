@@ -29,6 +29,7 @@ public class AddCDScreen extends AddItemToStoreScreen {
 	private JTextField textField_4;
 	private JTable table;
 	private int rowCount=0;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -50,18 +51,18 @@ public class AddCDScreen extends AddItemToStoreScreen {
 	 */
 	public AddCDScreen() {
 		setSize(670,590);
-		getCancelButton().setLocation(10, 477);
-		getAddButton().setLocation(10, 426);
-		getResetButton().setLocation(10, 375);
+		getCancelButton().setLocation(31, 477);
+		getAddButton().setLocation(31, 426);
+		getResetButton().setLocation(31, 375);
 
 		JLabel artistLabel = new JLabel("Artist");
 		artistLabel.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		artistLabel.setBounds(31, 273, 174, 40);
+		artistLabel.setBounds(31, 223, 174, 40);
 		getContentPane().add(artistLabel);
 		
 		JLabel trackLabel = new JLabel("Track");
 		trackLabel.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		trackLabel.setBounds(31, 223, 174, 40);
+		trackLabel.setBounds(31, 273, 174, 40);
 		getContentPane().add(trackLabel);
 		
 		textField_4 = new JTextField();
@@ -83,13 +84,13 @@ public class AddCDScreen extends AddItemToStoreScreen {
 		getContentPane().add(scrollPane);
 		
 
-		getResetButton().addActionListener(new ResetAllDVDAddFormActionListener());
-		getAddButton().addActionListener(new addNewCDToStore());
+		getResetButton().addActionListener(new ResetAllItemAddFormActionListener());
+		getAddButton().addActionListener(new AddNewItemToStoreActionListener());
 		
 		JButton addRowButton = new JButton("ADD ROW");
 		addRowButton.addActionListener(new addARowForInput());
 		addRowButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		addRowButton.setBounds(10, 331, 143, 34);
+		addRowButton.setBounds(31, 331, 143, 34);
 		getContentPane().add(addRowButton);
 		
 		JLabel lblNewLabel = new JLabel("Please add a row first!");
@@ -99,6 +100,9 @@ public class AddCDScreen extends AddItemToStoreScreen {
 
 	}
 	
+	/**
+	 * ADD ROW BUTTON's action
+	 */
 	private class addARowForInput implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -108,7 +112,10 @@ public class AddCDScreen extends AddItemToStoreScreen {
 		}
 	}
 	
-	private class ResetAllDVDAddFormActionListener  implements ActionListener {
+	/**
+	 * RESET BUTTON's action
+	 */
+	private class ResetAllItemAddFormActionListener  implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent evt) {
 			getTextField().setText("");
@@ -118,16 +125,26 @@ public class AddCDScreen extends AddItemToStoreScreen {
 			textField_4.setText("");
 			
 			DefaultTableModel model_table = (DefaultTableModel) table.getModel();
-//			int i_row = table.getRowCount();
+
 			for( int i = 0 ; i < rowCount ; i++ ) {				
 				model_table.setValueAt("",i,0 );
 				model_table.setValueAt("",i,1 );
 			}
+			
+			
+			for( int i = 0 ; i < rowCount ; i++ ) {			
+				model_table.removeRow(0);
+			}
+			
+			rowCount=0;
 			getAddButton().setEnabled(true);
 		}
 	}
 	
-	private class addNewCDToStore implements ActionListener {
+	/**
+	 * ADD BUTTON's action
+	 */
+	private class AddNewItemToStoreActionListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent evt) {
 			String tempStringID = getTextField().getText();

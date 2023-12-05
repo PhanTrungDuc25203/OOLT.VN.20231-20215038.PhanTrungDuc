@@ -61,6 +61,10 @@ public class AddDVDScreen extends AddItemToStoreScreen {
 		getResetButton().addActionListener(new ResetAllItemAddFormActionListener());
 		getAddButton().addActionListener(new AddNewItemToStoreActionListener());
 	}
+	
+	/**
+	 * RESET BUTTON's action
+	 */
 	private class ResetAllItemAddFormActionListener  implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent evt) {
@@ -75,6 +79,9 @@ public class AddDVDScreen extends AddItemToStoreScreen {
 		}
 	}
 	
+	/**
+	 * ADD BUTTON's action
+	 */
 	private class AddNewItemToStoreActionListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent evt) {

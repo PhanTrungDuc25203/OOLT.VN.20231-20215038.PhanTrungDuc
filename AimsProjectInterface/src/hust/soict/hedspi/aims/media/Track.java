@@ -49,6 +49,12 @@ public class Track implements Playable{
 		System.out.println();
 		return String.format("%20s%20s",title,length);
 	}
+
+	@Override
+	public void playDialog() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }

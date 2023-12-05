@@ -95,7 +95,6 @@ public class DigitalVideoDisc extends Disc implements Playable{
 	        });
 
 	        optionPane.setMessageType(JOptionPane.PLAIN_MESSAGE);
-//	        optionPane.setSize(500,500);
 	        JDialog dialog = optionPane.createDialog("Now Playing");
 	        dialog.setVisible(true);
 	    }
