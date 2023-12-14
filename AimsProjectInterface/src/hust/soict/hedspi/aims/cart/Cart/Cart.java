@@ -6,16 +6,39 @@ import hust.soict.hedspi.aims.disc.DigitalVideoDisc.DigitalVideoDisc;
 import hust.soict.hedspi.aims.media.Book;
 import hust.soict.hedspi.aims.media.CompactDisc;
 import hust.soict.hedspi.aims.media.Media;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class Cart {
 	private int qtyOrdered = 0;
-	private ArrayList<Media> itemOrdered = new ArrayList<>();
+	private ObservableList<Media> itemOrdered = FXCollections.observableArrayList();
 
 	public Cart() {
 		super();
 	}
 	
-	public Cart(ArrayList<Media> itemOrdered) {
+	
+	public int getQtyOrdered() {
+		return qtyOrdered;
+	}
+
+
+	public void setQtyOrdered(int qtyOrdered) {
+		this.qtyOrdered = qtyOrdered;
+	}
+
+
+	public ObservableList<Media> getItemOrdered() {
+		return itemOrdered;
+	}
+
+
+	public void setItemOrdered(ObservableList<Media> itemOrdered) {
+		this.itemOrdered = itemOrdered;
+	}
+
+
+	public Cart(ObservableList<Media> itemOrdered) {
 		super();
 		this.itemOrdered = itemOrdered;
 	}
