@@ -14,9 +14,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <top>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
             <Insets left="20.0" right="20.0" />
          </BorderPane.margin>
@@ -27,7 +27,10 @@
                </font>
             </Label>
             <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-            <Button fx:id="btnViewStorePressed" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" text="View Store" />
+            <Button fx:id="btnViewStorePressed" mnemonicParsing="false" onAction="#viewStoreButtonPressed" prefHeight="50.0" prefWidth="100.0" text="View Store" textFill="#1f1fc9">
+               <font>
+                  <Font size="16.0" />
+               </font></Button>
          </children>
       </HBox>
    </top>
@@ -42,7 +45,10 @@
                   <Insets bottom="10.0" top="10.0" />
                </padding>
                <children>
-                  <Label text="Filter" />
+                  <Label text="Filter">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Label>
                   <TextField fx:id="tfFilter" />
                   <RadioButton fx:id="radioBtnFilterId" mnemonicParsing="false" selected="true" text="By ID">
                      <toggleGroup>
@@ -52,7 +58,7 @@
                   <RadioButton fx:id="radioBtnFilterTitle" mnemonicParsing="false" text="By Title" toggleGroup="$filterCategory" />
                </children>
             </HBox>
-            <TableView fx:id="tblMedia" prefHeight="200.0" prefWidth="200.0">
+            <TableView fx:id="tblMedia" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #eeefd1;">
               <columns>
                 <TableColumn fx:id="colMediaId" prefWidth="75.0" text="ID" />
                 <TableColumn fx:id="colMediaTitle" prefWidth="407.1999969482422" text="TITLE" />
@@ -65,8 +71,14 @@
                   <Insets top="10.0" />
                </padding>
                <children>
-                  <Button fx:id="btnPlay" mnemonicParsing="false" onAction="#btnPlayPressed" prefWidth="60.0" text="Play" />
-                  <Button fx:id="btnRemove" mnemonicParsing="false" onAction="#btnRemovePressed" prefWidth="60.0" text="Remove" />
+                  <Button fx:id="btnPlay" mnemonicParsing="false" onAction="#btnPlayPressed" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #cae0e1; -fx-border-color: black;" text="Play">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Button>
+                  <Button fx:id="btnRemove" mnemonicParsing="false" onAction="#btnRemovePressed" prefHeight="27.0" prefWidth="129.0" style="-fx-background-color: #cae0e1; -fx-border-color: black;" text="Remove">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Button>
                </children>
             </HBox>
          </children>
@@ -89,7 +101,7 @@
                   </Label>
                </children>
             </HBox>
-            <Button mnemonicParsing="false" style="-fx-background-color: #004cff;" text="Place Order" textFill="WHITE">
+            <Button fx:id="btnPlaceOrder" mnemonicParsing="false" onAction="#btnPlaceOrderPressed" style="-fx-background-color: #004cff;" text="Place Order" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>

@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import hust.soict.hedspi.aims.cart.Cart.Cart;
 import hust.soict.hedspi.aims.media.Media;
+import hust.soict.hedspi.aims.media.Playable;
 import hust.soict.hedspi.aims.store.Store;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,18 +15,38 @@ import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class ViewStoreController {
 	private Store store;
 	private Cart cart;
-	public  ViewStoreController(Store store) {
+	
+	public  ViewStoreController(Store store, Cart cart) {
 		this.store = store;
+		this.cart = cart;
+	}
+	
+	public void setData() {
+		newItemInCartLabel.setVisible(false);
+    }
+	
+	@FXML
+	private Label newItemInCartLabel;
+	
+	
+    public void getNewItemInCartLabel() {
+    	newItemInCartLabel.setVisible(true);
 	}
 
-    @FXML
+	public void setNewItemInCartLabel(Label newItemInCartLabel) {
+		this.newItemInCartLabel = newItemInCartLabel;
+	}
+
+	@FXML
     private ResourceBundle resources;
 
     @FXML
@@ -39,8 +60,11 @@ public class ViewStoreController {
     	try {
     		final String CART_FXML_FILE_PATH = "/hust/soict/hedspi/aims/screen/customer/view/Cart.fxml";
     		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(CART_FXML_FILE_PATH));
-    		fxmlLoader.setController(new CartController(store, cart));
+    		CartController cartController = new CartController(store, cart);
+    		fxmlLoader.setController(cartController);
     		Parent root = fxmlLoader.load();
+    		cartController.setData(cart);
+    		
     		
     		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
     		stage.setScene(new Scene(root));
@@ -61,7 +85,7 @@ public class ViewStoreController {
         		FXMLLoader fxmlLoader = new FXMLLoader();
         		fxmlLoader.setLocation(getClass().getResource(ITEM_FXML_FILE_PATH));
         		
-				ItemController itemController = new ItemController(cart);
+				ItemController itemController = new ItemController(store, cart, this);
         		fxmlLoader.setController(itemController);
         		AnchorPane anchorPane = new AnchorPane();
         		anchorPane = fxmlLoader.load();
