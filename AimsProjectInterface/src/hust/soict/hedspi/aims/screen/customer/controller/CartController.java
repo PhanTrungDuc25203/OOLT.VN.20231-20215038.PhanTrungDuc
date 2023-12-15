@@ -1,5 +1,6 @@
 package hust.soict.hedspi.aims.screen.customer.controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -8,11 +9,17 @@ import hust.soict.hedspi.aims.cart.Cart.Cart;
 import hust.soict.hedspi.aims.media.Media;
 import hust.soict.hedspi.aims.media.Playable;
 import hust.soict.hedspi.aims.store.Store;
+import hust.soict.hedspi.test.screen.customer.store.TestViewStoreScreen;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -21,9 +28,32 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 
 public class CartController {
 	private Cart cart;
+	private Store store;
+	private FilteredList<Media> listItems;
+	
+	public CartController(Store store, Cart cart) {
+		this.store = store;
+		this.cart = cart;
+		this.listItems = new FilteredList<Media>(cart.getItemOrdered());
+	}
+
+	public void setData(Cart cart) {
+    	this.cart = cart;
+    	costLabel.setText(String.format(" %.2f"+" $", cart.totalCost()));
+
+    }
+	
+	public CartController(Cart cart) {
+		// TODO Auto-generated constructor stub
+		this.cart = cart;
+		this.listItems = new FilteredList<Media>(cart.getItemOrdered());
+	}
+
 	public Cart getCart() {
 		return cart;
 	}
@@ -31,20 +61,7 @@ public class CartController {
 	public void setCart(Cart cart) {
 		this.cart = cart;
 	}
-
-	private Store store;
-	private FilteredList<Media> listItems;
-	public CartController(Cart cart) {
-		this.cart = cart;
-		this.listItems = new FilteredList<Media>(cart.getItemOrdered());
-	}
-
-    public CartController(Store store, Cart cart) {
-		// TODO Auto-generated constructor stub
-    	this.store = store;
-    	this.cart = cart;
-	}
-
+	
 	public FilteredList<Media> getListItems() {
 		return listItems;
 	}
@@ -53,6 +70,9 @@ public class CartController {
 		this.listItems = listItems;
 	}
 
+    @FXML
+    private Button btnPlaceOrder;
+    
 	@FXML
     private ResourceBundle resources;
 
@@ -99,16 +119,57 @@ public class CartController {
     private TextField tfFilter;
 
     @FXML
+    void btnPlaceOrderPressed(ActionEvent event) throws Exception {
+    	final String ORDER_FXML_FILE_PATH = "/hust/soict/hedspi/aims/screen/customer/view/PlaceOrdered.fxml";
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ORDER_FXML_FILE_PATH));
+		PlaceOrderedController placeOrderController = new PlaceOrderedController(store, cart);
+		fxmlLoader.setController(placeOrderController);
+		Parent root = fxmlLoader.load();
+		placeOrderController.setData(cart);
+		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		stage.setScene(new Scene(root));
+		stage.setTitle("PlaceOrder");
+		stage.show();
+    }
+    
+    @FXML
     void btnPlayPressed(ActionEvent event) {
-
+    	Media media = tblMedia.getSelectionModel().getSelectedItem();
+    	media.playDialog();
     }
 
     @FXML
     void btnRemovePressed(ActionEvent event) {
+    	
     	Media media = tblMedia.getSelectionModel().getSelectedItem();
+
+    	costLabel.setText(String.format(" %.2f"+" $", cart.totalCost()-media.getCost()));
     	cart.removeMedia(media);
     }
+    
+    
+    
+    
+//    private Stage originalStage;
+//    public void setOriginalStage(Stage stage) {
+//        this.originalStage = stage;
+//    }
+    
+    @FXML
+    void viewStoreButtonPressed(ActionEvent event) throws Exception {
+    	final String STORE_FXML_FILE_PATH = "/hust/soict/hedspi/aims/screen/customer/view/Store.fxml";
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(STORE_FXML_FILE_PATH));
+		ViewStoreController viewStoreController = new ViewStoreController(store, cart);
+		fxmlLoader.setController(viewStoreController);
+		Parent root = fxmlLoader.load();
+		viewStoreController.setData();
+		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		stage.setScene(new Scene(root));
+		stage.setTitle("Store");
+		stage.show();
 
+    }
+    
     @FXML
     void initialize() {
 //        assert btnPlay != null : "fx:id=\"btnPlay\" was not injected: check your FXML file 'Cart.fxml'.";
@@ -159,7 +220,6 @@ public class CartController {
 		// TODO Auto-generated method stub
 		RadioButton selectedButton = (RadioButton)filterCategory.getSelectedToggle();
 		if(selectedButton == radioBtnFilterId) {
-//			int temp = Integer.parseInt(filter);
 			listItems.setPredicate(item -> item.getIdInString().contains(filter));
 		} else {
 			listItems.setPredicate(item -> item.getTitle().contains(filter));

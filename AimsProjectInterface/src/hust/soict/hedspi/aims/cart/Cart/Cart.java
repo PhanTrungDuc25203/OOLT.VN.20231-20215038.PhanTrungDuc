@@ -13,6 +13,12 @@ public class Cart {
 	private int qtyOrdered = 0;
 	private ObservableList<Media> itemOrdered = FXCollections.observableArrayList();
 
+	@Override
+	public String toString() {
+		return "Cart [qtyOrdered=" + qtyOrdered + ", itemOrdered=" + itemOrdered + "]";
+	}
+
+
 	public Cart() {
 		super();
 	}
@@ -123,5 +129,24 @@ public class Cart {
 		for(Media med : itemOrdered) {
 			itemOrdered.remove(med);
 		}
+	}
+	
+	public void removeAllMediaInCart(ObservableList<Media> itemOrdered) {
+		this.itemOrdered = itemOrdered;
+//		for(Media med : itemOrdered) {
+//			itemOrdered.remove(med);
+//		}
+		
+		for (int i = 0; i < itemOrdered.size(); i++) {
+            Media media = itemOrdered.get(i);
+            itemOrdered.remove(media);
+        }
+	}
+	
+	public void removeAllMediaInCart2() {
+		for (int i = 0; i < itemOrdered.size();) {
+            Media media = itemOrdered.get(i);
+            itemOrdered.remove(media);
+        }
 	}
 }

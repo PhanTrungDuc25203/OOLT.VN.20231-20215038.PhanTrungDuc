@@ -6,6 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
+import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
 import java.util.concurrent.atomic.AtomicBoolean;
 import hust.soict.hedspi.aims.media.Disc;
