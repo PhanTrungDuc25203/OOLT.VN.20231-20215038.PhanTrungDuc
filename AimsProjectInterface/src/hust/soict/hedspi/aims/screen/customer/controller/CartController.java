@@ -5,6 +5,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javax.swing.JOptionPane;
+
 import hust.soict.hedspi.aims.cart.Cart.Cart;
 import hust.soict.hedspi.aims.media.Media;
 import hust.soict.hedspi.aims.media.Playable;
@@ -120,16 +122,21 @@ public class CartController {
 
     @FXML
     void btnPlaceOrderPressed(ActionEvent event) throws Exception {
-    	final String ORDER_FXML_FILE_PATH = "/hust/soict/hedspi/aims/screen/customer/view/PlaceOrdered.fxml";
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ORDER_FXML_FILE_PATH));
-		PlaceOrderedController placeOrderController = new PlaceOrderedController(store, cart);
-		fxmlLoader.setController(placeOrderController);
-		Parent root = fxmlLoader.load();
-		placeOrderController.setData(cart);
-		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		stage.setScene(new Scene(root));
-		stage.setTitle("PlaceOrder");
-		stage.show();
+    	if(cart.getItemOrdered().size() == 0) {
+    		JOptionPane.showMessageDialog(null, "There is nothing to buy", "Are you sure?", JOptionPane.INFORMATION_MESSAGE);
+    	} else {
+    		final String ORDER_FXML_FILE_PATH = "/hust/soict/hedspi/aims/screen/customer/view/PlaceOrdered.fxml";
+    		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(ORDER_FXML_FILE_PATH));
+    		PlaceOrderedController placeOrderController = new PlaceOrderedController(store, cart);
+    		fxmlLoader.setController(placeOrderController);
+    		Parent root = fxmlLoader.load();
+    		placeOrderController.setData(cart);
+    		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    		stage.setScene(new Scene(root));
+    		stage.setTitle("PlaceOrder");
+    		stage.show();
+    	}
+    	
     }
     
     @FXML

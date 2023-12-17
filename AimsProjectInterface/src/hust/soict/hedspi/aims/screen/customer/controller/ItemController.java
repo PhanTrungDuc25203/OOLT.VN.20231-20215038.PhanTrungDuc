@@ -38,7 +38,7 @@ public class ItemController {
     		btnPlay.setVisible(true);
     	} else {
     		btnPlay.setVisible(false);
-    		HBox.setMargin(btnAddToCart, new Insets(0, 0, 0, 60));
+    		HBox.setMargin(btnAddToCart, new Insets(0, 0, 0, 0));
     		
     	}
     }
