@@ -9,7 +9,10 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
+import javax.swing.SwingUtilities;
 import javax.swing.SwingWorker;
+
+import hust.soict.hedspi.aims.disc.DigitalVideoDisc.CDPlayer;
 
 public class CompactDisc extends Disc implements Playable{
 	
@@ -80,11 +83,23 @@ public class CompactDisc extends Disc implements Playable{
 	
 	@Override
 	public void playDialog() {
-		JOptionPane.showMessageDialog(
-                null,              
-                "Playing: " + this.getTitle() + this.getTracks(), 
-                "Now playing",        
-                JOptionPane.INFORMATION_MESSAGE 
-        );
+//		JOptionPane.showMessageDialog(
+//                null,              
+//                "Playing: " + this.getTitle() + this.getTracks(), 
+//                "Now playing",        
+//                JOptionPane.INFORMATION_MESSAGE 
+//        );
+		
+		List<String> songTitles = new ArrayList<String>();
+        List<Integer> songDurations= new ArrayList<Integer>();
+	    for(Track trck : tracks) {
+	    	songTitles.add(trck.getTitle());
+	    	songDurations.add(trck.getLength());
+	    }
+
+        SwingUtilities.invokeLater(() -> {
+            CDPlayer multiSongPlayer = new CDPlayer(songTitles, songDurations);
+            multiSongPlayer.setVisible(true);
+        });
 	}
 }

@@ -69,28 +69,28 @@ public class TestViewStoreScreen extends Application{
 				new Book(2007, "So Dua", "Dân gian", 18.00f, authors7),
 		};
 		List<Track> trackList1 = new ArrayList<Track>();
-		 	trackList1.add(new Track("Alone", 100));
+		 	trackList1.add(new Track("Alone", 200));
 		 	trackList1.add(new Track("Alone II", 200));
 		 	trackList1.add(new Track("Faded", 300));
 		 	trackList1.add(new Track("Unity", 400));
 		 	trackList1.add(new Track("i'm on my way", 500));
 		List<Track> trackList2 = new ArrayList<Track>();
-			trackList2.add(new Track("Lover", 100));
+			trackList2.add(new Track("Lover", 200));
 			trackList2.add(new Track("Hello", 200));
 		List<Track> trackList3 = new ArrayList<Track>();
-		 	trackList3.add(new Track("Tàu anh qua núi", 100));
+		 	trackList3.add(new Track("Tàu anh qua núi", 200));
 		 	trackList3.add(new Track("Sầu tím điệp hồng", 200));
 		 	trackList3.add(new Track("Hồng nhan", 300));
 		List<Track> trackList4 = new ArrayList<Track>();
-		 	trackList4.add(new Track("Thunder", 100));
+		 	trackList4.add(new Track("Thunder", 200));
 		 	trackList4.add(new Track("My Heart", 200));
 		 	trackList4.add(new Track("Waiting for love", 300));
 		 	trackList4.add(new Track("The night", 400));
 		List<Track> trackList5 = new ArrayList<Track>();
-		 	trackList4.add(new Track("Quên người đã quá yêu", 50));
-		 	trackList4.add(new Track("Breakfast", 365));
-		 	trackList4.add(new Track("Bán duyên", 300));
-		 	trackList4.add(new Track("Duyên phận", 400));
+		 	trackList5.add(new Track("Quên người đã quá yêu", 200));
+		 	trackList5.add(new Track("Breakfast", 365));
+		 	trackList5.add(new Track("Bán duyên", 300));
+		 	trackList5.add(new Track("Duyên phận", 400));
 		CompactDisc compactDiscList[] = {
 			new CompactDisc(3001, "Alan Walker", "EDM", 142.90f, "Alan Walker", trackList1),
 			new CompactDisc(3002, "Taylor Swift", "Pop", 230.23f, "Taylor Swift", trackList2),

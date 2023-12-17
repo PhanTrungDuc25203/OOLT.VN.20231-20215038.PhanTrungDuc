@@ -78,19 +78,25 @@ public class PlaceOrderedController {
 
     @FXML
     void btnPlaceOrderPressed(ActionEvent event) throws IOException {
-    	JOptionPane.showMessageDialog(null, "Thank you for visiting", "Good-bye", JOptionPane.INFORMATION_MESSAGE);
-    	//System.out.println(cart.getItemOrdered().toString());
-    	cart.removeAllMediaInCart2();
-    	final String STORE_FXML_FILE_PATH = "/hust/soict/hedspi/aims/screen/customer/view/Store.fxml";
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(STORE_FXML_FILE_PATH));
-		ViewStoreController viewStoreController = new ViewStoreController(store, cart);
-		fxmlLoader.setController(viewStoreController);
-		Parent root = fxmlLoader.load();
-		viewStoreController.setData();
-		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-		stage.setScene(new Scene(root));
-		stage.setTitle("Store");
-		stage.show();
+    	
+    	if(cart.getItemOrdered().size() == 0) {
+    		JOptionPane.showMessageDialog(null, "There is nothing to buy", "Are you sure?", JOptionPane.INFORMATION_MESSAGE);
+    	} else {
+    		JOptionPane.showMessageDialog(null, "Thank you for visiting", "Good-bye", JOptionPane.INFORMATION_MESSAGE);
+        	//System.out.println(cart.getItemOrdered().toString());
+        	cart.removeAllMediaInCart2();
+        	
+        	final String STORE_FXML_FILE_PATH = "/hust/soict/hedspi/aims/screen/customer/view/Store.fxml";
+    		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(STORE_FXML_FILE_PATH));
+    		ViewStoreController viewStoreController = new ViewStoreController(store, cart);
+    		fxmlLoader.setController(viewStoreController);
+    		Parent root = fxmlLoader.load();
+    		viewStoreController.setData();
+    		Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    		stage.setScene(new Scene(root));
+    		stage.setTitle("Store");
+    		stage.show();
+    	}
     }
 
     @FXML

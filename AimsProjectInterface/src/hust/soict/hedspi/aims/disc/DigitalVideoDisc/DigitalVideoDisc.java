@@ -32,7 +32,11 @@ public class DigitalVideoDisc extends Disc implements Playable{
 	
 	@Override
 	public void playDialog() {
-		showPlayingDialog(this.getTitle(), this.getLength());
+//		showPlayingDialog(this.getTitle(), this.getLength());
+		SwingUtilities.invokeLater(() -> {
+            PlayingFrame playingFrame = new PlayingFrame(this.getTitle(), this.getLength());
+            playingFrame.setVisible(true);
+        });
 	}
 	
 	 private static void showPlayingDialog(String songInfo, int progressBarRunTimeInSeconds) {
